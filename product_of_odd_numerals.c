@@ -12,11 +12,6 @@ int main() {
 
     number = number < 0 ? -number : number;
 
-    if (number == 0) {
-        printf("0");
-        return 0;
-    }
-
     while (number > 0) {
         int digit = number % 10;
         if (digit % 2 != 0) {

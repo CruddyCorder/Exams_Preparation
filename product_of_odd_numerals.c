@@ -1,34 +1,35 @@
 #include <stdio.h>
 
 int main() {
-    int number, flag = 1;
-    int count = 0;
+    int number;
     int product = 1;
     int has_odd = 0;
 
-    while (flag) {
-        if (scanf("%d", &number) != 1) {
-            printf("n/a");
-            return 1;
-        } else if (number == -1) {
-            flag = 0;
-        } else {
-            count++;
-            if (number % 2 != 0) {
-                product *= number;
-                has_odd = 1;
-            }
-        }
+    if (scanf("%d", &number) != 1 || getchar() != '\n') {
+        printf("n/a");
+        return 1;
     }
 
-    if (count == 0) {
+    number = number < 0 ? -number : number;
+
+    if (number == 0) {
         printf("0");
-    } else if (count == 1) {
-        printf("%d", number < 0 ? -number : number);
-    } else if (count == 2) {
+        return 0;
+    }
+
+    while (number > 0) {
+        int digit = number % 10;
+        if (digit % 2 != 0) {
+            product *= digit;
+            has_odd = 1;
+        }
+        number /= 10;
+    }
+
+    if (!has_odd) {
         printf("0");
     } else {
-        printf("%d", has_odd ? product : 0);
+        printf("%d", product);
     }
 
     return 0;

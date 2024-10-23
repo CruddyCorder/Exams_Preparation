@@ -8,7 +8,8 @@ int main() {
 
     while (flag) {
         if (scanf("%d", &number) != 1) {
-            flag = 0;
+            printf("n/a");
+            return 1;
         } else if (number == -1) {
             flag = 0;
         } else {
